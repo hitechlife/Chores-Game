@@ -13,6 +13,9 @@ public class PlayerLivingRoomBehavior : MonoBehaviour
     }
 
     void Update() {
+        if (GameManager.S.DisabledMovement()) {
+            return;
+        }
         // if (Input.GetKeyDown(KeyCode.R)) {
         //     if (transform.childCount > 0) {
         //         transform.GetChild(0).GetComponent<BoxCollider2D>().enabled = true;

@@ -54,12 +54,12 @@ public class GameManager : MonoBehaviour
     }
 
     public void NextRoom(string lastRoom, string nextRoom) {
-        if (!won) {
+        disabledMovement = true;
+        if (!won || gameOverScreen.activeSelf) {
             ShowGameOver();
             return;
         }
         timer.Reset(15000);
-        disabledMovement = true;
         //TODO: remove all children, move player's location, reenable movement, reset timer
 
         switch (lastRoom) {
@@ -92,6 +92,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void ShowGameOver() {
+        disabledMovement = true;
         gameOverScreen.SetActive(true);
     }
 
@@ -105,7 +106,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void StartGame() {
-        SceneManager.LoadScene("ChannelGame");
+        SceneManager.LoadScene("Channel Game");
     }
 
     public void QuitGame() {

@@ -22,6 +22,9 @@ public class MovementManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.S.DisabledMovement()) {
+            return;
+        }
         /*if (!GameManager.S.DisabledMovement()) {
             if (Input.GetAxisRaw("Horizontal") > 0)
             {
@@ -56,6 +59,9 @@ public class MovementManager : MonoBehaviour
     }
     public void Move()
     {
+        if (GameManager.S.DisabledMovement()) {
+            return;
+        }
         transform.Translate(direction*moveSpeed*Time.deltaTime);
         if (this.GetComponent<PlayerLivingRoomBehavior>().vactime == true && (direction.x != 0 || direction.y != 0))
         {
