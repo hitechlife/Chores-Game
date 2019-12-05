@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject gameOverScreen;
     [SerializeField] GameObject successScreen;
     public static GameManager S;
-    private int score = 0;
+    private int score = 6;
     private bool disabledMovement = false;
     private string currRoom = "Kitchen";
     bool won = false;
@@ -29,13 +29,13 @@ public class GameManager : MonoBehaviour
     void Update() {
         switch (currRoom) {
             case "Kitchen":
-                if (score >= 30 && !won) {
+                if (score <= 0 && !won) {
                     won = true;
                     NextRoom("Kitchen", "LivingRoom");
                 }
                 break;
             case "LivingRoom":
-                if (score >= 130 && !won) {
+                if (score <= 0 && !won) {
                     won = true;
                     NextRoom("LivingRoom", "FightScene");
                 }
@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void UpdateScore(int s) {
-        score += s;
+        score -= s;
     }
 
     public bool DisabledMovement() {
@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
             ShowGameOver();
             return;
         }
-        timer.Reset(10000);
+        timer.Reset(15000);
         disabledMovement = true;
         //TODO: remove all children, move player's location, reenable movement, reset timer
 
@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
                 door.SetActive(false);
                 player.GetComponent<PlayerLivingRoomBehavior>().enabled = true;
                 timer.Reset(60);
+                score = 10;
                 if (player.transform.childCount > 0) player.transform.GetChild(0).parent = null;
                 player.transform.position = livingRoomPosition;
                 disabledMovement = false;
@@ -103,12 +104,12 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    //TODO: create main menu scene
-    public void ShowMainMenu() {
+    public void StartGame() {
         SceneManager.LoadScene("ChannelGame");
     }
 
     public void QuitGame() {
+        //End Game Here
         Application.Quit();
     }
 }

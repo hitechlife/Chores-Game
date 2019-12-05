@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    private Text text;
+    Text text;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +17,7 @@ public class Score : MonoBehaviour
     IEnumerator UpdateScore()
     {
         while(true) {
-            text.text = "Score: " + GameManager.S.GetScore();
+            text.text = "Targets Remaining: " + GameManager.S.GetScore();
             yield return null;
         }
     }

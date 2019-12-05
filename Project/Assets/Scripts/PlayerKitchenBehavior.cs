@@ -71,7 +71,7 @@ public class PlayerKitchenBehavior : MonoBehaviour
                     // If we have a dish, destroy it
                     if (transform.childCount > 0 && transform.GetChild(0).tag == "dish") {
                         Destroy(transform.GetChild(0).gameObject);
-                        GameManager.S.UpdateScore(10);
+                        GameManager.S.UpdateScore(1);
                         other.GetComponent<cakeslice.Outline>().eraseRenderer = true;
                         pickedUp = false;
 

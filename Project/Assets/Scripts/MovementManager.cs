@@ -57,12 +57,20 @@ public class MovementManager : MonoBehaviour
     public void Move()
     {
         transform.Translate(direction*moveSpeed*Time.deltaTime);
-        if (this.GetComponent<PlayerLivingRoomBehavior>().vactime == true)
+        if (this.GetComponent<PlayerLivingRoomBehavior>().vactime == true && (direction.x != 0 || direction.y != 0))
         {
             animator.SetLayerWeight(1,1);
             AnimateMovement(direction);
         } else {
-            animator.SetLayerWeight(1,0);
+            //animator.SetLayerWeight(1,0);
+            AnimateMovement(direction);
+        }
+        if (this.GetComponent<PlayerLivingRoomBehavior>().vactime == false && (direction.x != 0 || direction.y != 0))
+        {
+            animator.SetLayerWeight(2,1);
+            AnimateMovement(direction);
+        } else {
+            animator.SetLayerWeight(2,0);
             AnimateMovement(direction);
         }
     }

@@ -35,7 +35,7 @@ public class Timer : MonoBehaviour
         if (timer >= 0) {
             timer -= Time.deltaTime;
             if (timer <= 10) text.color = Color.red;
-            text.text = ((int) timer).ToString() + " s";
+            text.text = "Time-" + ((int) timer).ToString();
         } else if (!won) {
             text.text = "Time's up!";
             GameManager.S.NextRoom("Kitchen", "LivingRoom");

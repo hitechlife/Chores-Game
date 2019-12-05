@@ -34,7 +34,7 @@ public class PlayerLivingRoomBehavior : MonoBehaviour
                     // If we're carrying the vacuum, pick it up
                     if (transform.childCount == 1) {
                         Destroy(other.gameObject);
-                        GameManager.S.UpdateScore(10);
+                        GameManager.S.UpdateScore(1);
 
                     }
                     break;
