@@ -2,16 +2,16 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
-/[Ll]ibrary/
-/[Tt]emp/
-/[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
-/[Ll]ogs/
-/[Mm]emoryCaptures/
+Project/[Ll]ibrary/
+Project/[Tt]emp/
+Project/[Oo]bj/
+Project/[Bb]uild/
+Project/[Bb]uilds/
+Project/[Ll]ogs/
+Project/[Mm]emoryCaptures/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
-!/[Aa]ssets/**/*.meta
+!Project/[Aa]ssets/**/*.meta
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # /[Aa]ssets/AssetStoreTools*
@@ -21,6 +21,7 @@
 
 # Visual Studio cache directory
 .vs/
+Project/.vscode/
 
 # Gradle cache directory
 .gradle/
