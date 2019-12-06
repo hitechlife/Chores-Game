@@ -6,6 +6,8 @@ public class PlayerLivingRoomBehavior : MonoBehaviour
 {
     public bool vactime = false;
     public GameObject vac;
+    public string soundname;
+    public string soundname2;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +38,7 @@ public class PlayerLivingRoomBehavior : MonoBehaviour
                 case "dirt":
                     // If we're carrying the vacuum, pick it up
                     if (transform.childCount == 1) {
+                        FindObjectOfType<SoundManager>().randoPlay(soundname2);
                         Destroy(other.gameObject);
                         GameManager.S.UpdateScore(1);
 
@@ -43,6 +46,7 @@ public class PlayerLivingRoomBehavior : MonoBehaviour
                     break;
                 case "vacuum":
                     vactime = true;
+                    FindObjectOfType<SoundManager>().Play(soundname);
                     vac.SetActive(false);
                     other.GetComponent<cakeslice.Outline>().eraseRenderer = true;
                     other.transform.parent = transform;

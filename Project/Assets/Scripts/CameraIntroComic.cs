@@ -34,6 +34,10 @@ public class CameraIntroComic : MonoBehaviour {
       StartCoroutine(AutoScrollRoutine());
     }
   }
+  void Start()
+  {
+    FindObjectOfType<SoundManager>().Play("intromusic");
+  }
 
   private void Update() {
     if (targetPosition != transform.position) {

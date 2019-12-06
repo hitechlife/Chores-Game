@@ -7,8 +7,15 @@ public class PlayerKitchenBehavior : MonoBehaviour
 {
     [SerializeField] private GameObject sink = null;
     public bool pickedUp = false;
+    public string soundname;
+    public string soundname2;
 
     // Update is called once per frame
+    void Start()
+    {
+        FindObjectOfType<SoundManager>().Play("lev1mus");
+        FindObjectOfType<SoundManager>().StopPlaying("intromusic");
+    }
     void Update()
     {
         //TODO: not hardcode this
@@ -51,6 +58,7 @@ public class PlayerKitchenBehavior : MonoBehaviour
                         if (outline) outline.eraseRenderer = true;
                         if (sink) sink.GetComponent<cakeslice.Outline>().eraseRenderer = false;
                         other.GetComponent<CircleCollider2D>().enabled = false;
+                        FindObjectOfType<SoundManager>().randoPlay(soundname);
                         pickedUp = true;
                         //StartCoroutine(ExecuteAfterTime());
 
@@ -72,6 +80,7 @@ public class PlayerKitchenBehavior : MonoBehaviour
                     if (transform.childCount > 0 && transform.GetChild(0).tag == "dish") {
                         Destroy(transform.GetChild(0).gameObject);
                         GameManager.S.UpdateScore(1);
+                        FindObjectOfType<SoundManager>().randoPlay(soundname2);
                         other.GetComponent<cakeslice.Outline>().eraseRenderer = true;
                         pickedUp = false;
 
