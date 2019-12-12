@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviour
     }
 
     void Update() {
+        if (Input.GetKey(KeyCode.Escape)) {
+            MainMenu();
+        }
         switch (currRoom) {
             case "Kitchen":
                 if (score <= 0 && !won) {
@@ -107,6 +110,10 @@ public class GameManager : MonoBehaviour
 
     public void StartGame() {
         SceneManager.LoadScene("Channel Game");
+    }
+
+        public void MainMenu() {
+        SceneManager.LoadScene("Main Menu");
     }
 
     public void QuitGame() {
